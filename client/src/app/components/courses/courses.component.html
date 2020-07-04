@@ -1,0 +1,67 @@
+<app-navegacion></app-navegacion>
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <form #courseForm="ngForm" (ngSubmit)="addCourse(courseForm)">
+            <div class="row">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="courseService.selectedCourse._id">
+              <div class="input-field col s12">
+                <input class="validate" type="text" name="name" #name="ngModel" [(ngModel)]="courseService.selectedCourse.name" placeholder="Name" required>
+              </div>
+              <div class="input-field col m6 s12">
+                <input class="validate timepicker" type="text" name="startTime" #startTime="ngModel" [(ngModel)]="courseService.selectedCourse.startTime" placeholder="Start Time" required>
+              </div>
+              <div class="input-field col m6 s12">
+                <input class="validate timepicker" type="text" name="endTime" #endTime="ngModel" [(ngModel)]="courseService.selectedCourse.endTime" placeholder="End Time" required>
+              </div>
+              <div class="input-field col s12">
+                <input class="datepicker validate" type="text" name="dateIni" #dateIni="ngModel" [(ngModel)]="courseService.selectedCourse.dateIni" placeholder="Initial Date" required>
+              </div>
+              <div class="input-field col s12">
+                <input class="datepicker validate" type="text" name="dateFin" #dateFin="ngModel" [(ngModel)]="courseService.selectedCourse.dateFin" placeholder="Final Date" required>
+              </div>
+              <div class="card-action">
+                <div class="input-field col s12">
+                  <button class="btn">Save</button>
+                  <button class="btn" (click)="resetForm(courseForm)">Clean</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Schedule</th>
+            <th>Initial Date</th>
+            <th>Final Date</th>
+            <th>Operations</th>
+         </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courseService.coursesArray">
+            <td>{{course.name}}</td>
+            <td>{{course.startTime}} - {{course.endTime}}</td>
+            <td>{{course.dateIni}}</td>
+            <td>{{course.dateFin}}</td>
+            <td>
+              <a (click)="editCourse(course)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteCourse(course._id)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

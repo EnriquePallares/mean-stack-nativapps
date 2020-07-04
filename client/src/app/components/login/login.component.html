@@ -1,0 +1,31 @@
+<div class="container valign-wrapper">
+  <div class="row login-form">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title center-align">
+            <h3>Login</h3>
+          </span>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input class="validate" type="email" name="email" formControlName="email" placeholder="Email" required>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">vpn_key</i>
+                <input class="validate" type="password" name="password" formControlName="password" placeholder="Password" required>
+              </div>
+              <div class="card-action">
+                <div class="input-field col s12 center-align">
+                  <button class="btn">Login</button>
+                  <a class="btn" [routerLink]="['/users/signup']">Register</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

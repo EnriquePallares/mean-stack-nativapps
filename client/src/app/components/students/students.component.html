@@ -1,0 +1,71 @@
+<app-navegacion></app-navegacion>
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <form #studentForm="ngForm" (ngSubmit)="addStudent(studentForm)">
+            <div class="row">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="studentService.selectedStudent._id">
+              <div class="input-field col s12">
+                <input class="validate" type="text" name="name" #name="ngModel" [(ngModel)]="studentService.selectedStudent.name" placeholder="Name" required>
+              </div>
+              <div class="input-field col s12">
+                <input type="text" name="lastname" #lastname="ngModel" [(ngModel)]="studentService.selectedStudent.lastname" placeholder="Lastname" required>
+              </div>
+              <div class="input-field col s12">
+                <input class="validate" type="number" name="age" #age="ngModel" [(ngModel)]="studentService.selectedStudent.age" placeholder="Age" required>
+              </div>
+              <div class="input-field col s12">
+                <input class="validate" type="text" name="email" #email="ngModel" [(ngModel)]="studentService.selectedStudent.email" placeholder="Email" required>
+              </div>
+              <div class="input-field col s12">
+                <select name="courseAssocciated" multiple #courseAssocciated="ngModel" [(ngModel)]="studentService.selectedStudent.courseAssocciated">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option *ngFor="let course of courses" value="{{course.name}}">{{course.name}}</option>
+                </select>
+              </div>
+              <div class="card-action">
+                <div class="input-field col s12">
+                  <button class="btn">Save</button>
+                  <button class="btn" (click)="resetForm(studentForm)">Clean</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Courses</th>
+            <th>Operations</th>
+         </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of studentService.studentsArray">
+            <td>{{student.name}}</td>
+            <td>{{student.lastname}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.courseAssocciated}}</td>
+            <td>
+              <a (click)="editStudent(student)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteStudent(student._id)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

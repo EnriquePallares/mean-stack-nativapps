@@ -1,0 +1,39 @@
+<div class="container valign-wrapper">
+  <div class="row register-form">
+    <div class="col-s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title center-align">
+            <h4>Register Form</h4>
+          </span>
+          <form #registerForm="ngForm" (ngSubmit)="addUser(registerForm)">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input class="validate" type="text" name="name" [(ngModel)]="loginService.selectedUser.name" placeholder="Name" required>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input class="validate" type="email" name="email" [(ngModel)]="loginService.selectedUser.email" placeholder="Email" required>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">vpn_key</i>
+                <input class="validate" type="password" name="password" [(ngModel)]="loginService.selectedUser.password" placeholder="Password" required>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">verified</i>
+                <input class="validate" type="password" name="confirm_password" [(ngModel)]="loginService.selectedUser.confirm_password" placeholder="Confirm Password" required>
+              </div>
+              <div class="card-action">
+                <div class="input-field col s12 center-align">
+                  <button class="btn">SignUp</button>
+                  <a class="btn" [routerLink]="['']">Back</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
