@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "1.0.0-beta.33.1",
+    "@angular/cli": "1.7.4",
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
     "@angular/compiler-cli": "^2.4.0",
